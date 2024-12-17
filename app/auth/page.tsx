@@ -1,13 +1,15 @@
 import { getProviders } from 'next-auth/react'
 import ProviderButton from './_components/ProviderButton'
+import { ONE_HOUR } from '@/lib/constants'
 
-export const revalidate = 3600
+export const revalidate = ONE_HOUR
 
 export default async function Auth() {
   const providers = await getProviders()
 
   if (!providers) {
-    return <div>No providers found</div>
+    console.error('No providers found')
+    return <div>No authentication providers found</div>
   }
 
   return (
