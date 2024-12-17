@@ -3,14 +3,20 @@ import { getToken } from 'next-auth/jwt'
 
 export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request })
-  
+
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
     if (!token) {
       return NextResponse.redirect(new URL('/auth', request.url))
     }
   }
+
+  if (request.nextUrl.pathname.startsWith('/api/rawg')) {
+    if (!token) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+  }
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: ['/dashboard/:path*', '/api/rawg/:path*'],
 }
