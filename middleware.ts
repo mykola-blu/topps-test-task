@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { COOKIE_NAME } from './lib/constants'
+import { getToken } from 'next-auth/jwt'
 
-export function middleware(request: NextRequest): NextResponse | void {
+export async function middleware(request: NextRequest) {
+  const token = await getToken({ req: request })
+  
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
-    if (!request.cookies.has(COOKIE_NAME)) {
+    if (!token) {
       return NextResponse.redirect(new URL('/auth', request.url))
     }
   }
