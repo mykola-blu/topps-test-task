@@ -1,5 +1,6 @@
 export const links = [
-  { route: '/dashboard', name: 'Home' },
-  { route: '/dashboard/games', name: 'Games' },
-  { route: '/dashboard/stores', name: 'Stores' },
+  { route: '/dashboard', name: 'Dashboard' },
+  { route: '/games', name: 'Games' },
+  { route: '/stores', name: 'Stores' },
 ]
+

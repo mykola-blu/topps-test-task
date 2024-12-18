@@ -3,7 +3,7 @@ import Sidebar from '@/components/Sidebar'
 
 export const revalidate = FIFTEEN_MINUTES
 
-export default function DashboardLayout({
+export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode
@@ -11,7 +11,7 @@ export default function DashboardLayout({
   return (
     <div className="flex w-screen h-screen">
       <Sidebar />
-      <main className="w-[calc(100vw-200px)] ">{children}</main>
+      <main className="w-[82vw]">{children}</main>
     </div>
   )
 }
