@@ -1,7 +1,7 @@
-import BoardSlot from '@/components/BoardSlot'
 import { STORES_DASHBOARD_TITLE } from '@/lib/constants'
 import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
 import { RawgStore } from 'rawg'  
+import StoreSlot from './_components/StoreSlot'
 
 export default async function Stores() {
   const headers = await getHeadersForApiCall()
@@ -12,10 +12,10 @@ export default async function Stores() {
   ).json()
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-2">{STORES_DASHBOARD_TITLE}</h2>
+    <div className="py-2 px-4 overflow-y-auto h-full">
+      <h2 className="text-2xl font-bold mb-1">{STORES_DASHBOARD_TITLE}</h2>
       {data.slice(0, 6).map((store: RawgStore) => (
-        <BoardSlot key={store.id}>{store.name} - {store.games_count}</BoardSlot>
+        <StoreSlot key={store.id} store={store} />
       ))}
     </div>
   )

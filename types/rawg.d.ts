@@ -17,6 +17,7 @@ declare module 'rawg' {
   export interface RawgStore extends RawgResult {
     domain: string
     games_count: number
+    image_background: string
   }
   export interface RawgCreator extends RawgResult {
     games_count: number

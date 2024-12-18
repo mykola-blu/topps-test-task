@@ -11,10 +11,10 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="w-full h-screen">
-      <section className="border-b border-default-100 w-full h-[10%]">
+      <section className="border-b border-default-100 w-full h-[9%]">
         {children}
       </section>
-      <div className="md:flex w-full h-[90%]  overflow-y-auto">
+      <div className="md:flex w-full h-[91%]">
         <section className="md:w-1/2 border-r border-b md:border-b-0 border-default-100">
           {leaderboard}
         </section>
