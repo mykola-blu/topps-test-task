@@ -1,7 +1,7 @@
 export default function DashboardPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Dashboard</h1>
+    <div className='flex justify-center items-center h-full'>
+      <h1 className="text-2xl font-bold">Your Diamonds</h1>
     </div>
   );
 }

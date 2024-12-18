@@ -14,3 +14,9 @@ export const RAWG_CREATOR_REQUIRED_FIELDS = ['games_count', 'image']
 export const FIFTEEN_MINUTES = 900
 export const HALF_HOUR = 1800
 export const ONE_HOUR = 3600
+
+// Titles
+export const DASHBOARD_TITLE = 'Your Diamonds'
+export const LEADERBOARD_TITLE = 'Leaderboard'
+export const STORES_DASHBOARD_TITLE = 'Top Stores'
+export const GAMES_DASHBOARD_TITLE = 'Top Games'

@@ -4,7 +4,7 @@ import { getToken } from 'next-auth/jwt'
 export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request })
 
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+  if (/^(\/dashboard|\/games|\/stores)/.test(request.nextUrl.pathname)) {
     if (!token) {
       return NextResponse.redirect(new URL('/auth', request.url))
     }
@@ -18,5 +18,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/api/rawg/:path*'],
+  matcher: ['/:path+'],
 }
