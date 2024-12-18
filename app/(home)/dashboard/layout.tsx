@@ -10,19 +10,19 @@ export default function DashboardLayout({
   leaderboard: React.ReactNode
 }) {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-screen">
       <section className="border-b border-default-50 w-full h-[10%]">
         {children}
       </section>
-      <div className="flex w-full h-[90%]">
-        <section className="w-1/2 border-r border-default-50">
+      <div className="md:flex w-full h-[90%]  overflow-y-auto">
+        <section className="md:w-1/2 border-r border-b md:border-b-0 border-default-50">
           {leaderboard}
         </section>
-        <div className=" w-1/2 flex flex-col">
-          <section className=" border-b border-default-50 w-full h-1/2">
+        <div className=" md:w-1/2 flex flex-col">
+          <section className=" border-b border-default-50 w-full md:h-1/2">
             {games}
           </section>
-          <section className="w-full h-1/2">{stores}</section>
+          <section className="w-full md:h-1/2">{stores}</section>
         </div>
       </div>
     </div>
