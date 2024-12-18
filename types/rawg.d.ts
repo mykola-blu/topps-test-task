@@ -19,7 +19,7 @@ declare module 'rawg' {
     games_count: number
   }
   export interface RawgCreator extends RawgResult {
-    name: string
+    games_count: number
     image: string
   }
 }
