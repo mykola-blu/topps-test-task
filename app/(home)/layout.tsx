@@ -11,7 +11,7 @@ export default function HomeLayout({
   return (
     <div className="flex w-screen h-screen">
       <Sidebar />
-      <main className="w-full md:w-[82vw]">{children}</main>
+      <main className="w-full md:w-[80vw]">{children}</main>
     </div>
   )
 }

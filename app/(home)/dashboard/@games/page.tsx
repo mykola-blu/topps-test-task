@@ -1,3 +1,4 @@
+import BoardSlot from '@/components/BoardSlot'
 import { GAMES_DASHBOARD_TITLE } from '@/lib/constants'
 import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
 import { RawgGame } from 'rawg'
@@ -13,8 +14,8 @@ export default async function Games() {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-2">{GAMES_DASHBOARD_TITLE}</h2>
-      {data.slice(0, 7).map((game: RawgGame) => (
-        <div key={game.id}>{game.name} - {game.rating}</div>
+      {data.slice(0, 6).map((game: RawgGame) => (
+        <BoardSlot key={game.id}>{game.name} - {game.rating}</BoardSlot>
       ))}
     </div>
   )

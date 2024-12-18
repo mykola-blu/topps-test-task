@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import Logo from '@/public/globe.svg'
+import Logo from '@/public/topps.svg'
 import { Button, cn } from '@nextui-org/react'
 import { usePathname } from 'next/navigation'
 import { links } from '@/lib/nav-path-list'
@@ -23,13 +23,32 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="relative">
-      <div className={cn("absolute top-8 left-5 z-10", isOpen ? 'hidden' : 'block', 'md:hidden')}>
+      <div
+        className={cn(
+          'absolute top-8 left-5 z-[101]',
+          isOpen ? 'hidden' : 'block',
+          'md:hidden'
+        )}
+      >
         <AlignJustify onClick={() => setIsOpen(!isOpen)} />
       </div>
-      <div className={cn("absolute top-8 left-[80vw] z-10", isOpen ? 'block' : 'hidden', 'md:hidden')}>
+      <div
+        className={cn(
+          'absolute top-8 left-[80vw] z-[101]',
+          isOpen ? 'block' : 'hidden',
+          'md:hidden'
+        )}
+      >
         <X onClick={() => setIsOpen(!isOpen)} />
       </div>
-      <aside className={cn("absolute md:static w-[90vw] md:w-[18vw] h-full border-r border-default-50 bg-background", isOpen ? 'block' : 'hidden', 'md:block', 'transition-all duration-500 ease-in-out')} >
+      <aside
+        className={cn(
+          'absolute md:static w-[90vw] md:w-[20vw] h-full border-r border-default-100 bg-background z-[100]',
+          isOpen ? 'block' : 'hidden',
+          'md:block',
+          'transition-all duration-500 ease-in-out'
+        )}
+      >
         <div className="w-full h-full px-3 relative">
           <div className="mb-12">
             <figure className="w-[80px] pt-4">
@@ -42,7 +61,7 @@ export default function Sidebar() {
                 <Link href={link.route}>
                   <div
                     className={cn(
-                      `w-full h-full py-2 px-2 hover:bg-content1 rounded-lg `,
+                      `w-full h-full py-2 px-2 hover:bg-secondary rounded-lg `,
                       isActiveRoute(path, link.route) && activeClass
                     )}
                   >

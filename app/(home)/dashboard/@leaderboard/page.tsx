@@ -1,6 +1,7 @@
 import { RawgCreator } from 'rawg'
 import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
 import { LEADERBOARD_TITLE } from '@/lib/constants'
+import LeaderboardSlot from './_components/LeaderboardSlot'
 
 export default async function Leaders() {
   const headers = await getHeadersForApiCall()
@@ -11,12 +12,10 @@ export default async function Leaders() {
   ).json()
 
   return (
-    <div className='p-4'>
-      <h2 className="text-2xl font-bold mb-2">{LEADERBOARD_TITLE}</h2>
-      {data.map(({ name, games_count, id }: RawgCreator) => (
-        <div key={id}>
-          {name} - {games_count}
-        </div>
+    <div className='h-full py-2 px-4 overflow-y-auto'>
+      <h2 className="text-2xl font-bold mb-1">{LEADERBOARD_TITLE}</h2>
+      {data.map((creator: RawgCreator, index: number) => (
+        <LeaderboardSlot key={creator.id} creator={creator} rank={index + 1} />
       ))}
     </div>
   )

@@ -1,3 +1,4 @@
+import BoardSlot from '@/components/BoardSlot'
 import { STORES_DASHBOARD_TITLE } from '@/lib/constants'
 import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
 import { RawgStore } from 'rawg'  
@@ -13,8 +14,8 @@ export default async function Stores() {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-2">{STORES_DASHBOARD_TITLE}</h2>
-      {data.slice(0, 7).map((store: RawgStore) => (
-        <div key={store.id}>{store.name} - {store.games_count}</div>
+      {data.slice(0, 6).map((store: RawgStore) => (
+        <BoardSlot key={store.id}>{store.name} - {store.games_count}</BoardSlot>
       ))}
     </div>
   )
