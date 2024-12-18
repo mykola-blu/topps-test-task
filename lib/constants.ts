@@ -9,6 +9,7 @@ export const RAWG_CREATORS_ENDPOINT = `${RAWG_API_ENDPOINT}creators${RAWG_API_KE
 export const RAWG_GAME_REQUIRED_FIELDS = ['released', 'background_image', 'rating']
 export const RAWG_STORE_REQUIRED_FIELDS = ['domain', 'games_count']
 export const RAWG_CREATOR_REQUIRED_FIELDS = ['games_count', 'image']
+
 // Time intervals for data revalidation
 export const FIFTEEN_MINUTES = 900
 export const HALF_HOUR = 1800
