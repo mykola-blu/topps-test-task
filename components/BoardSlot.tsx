@@ -29,7 +29,7 @@ export default function BoardSlot({
         }
       }}
     >
-      {imageUrl && <Image fill src={imageUrl} alt="." className="object-cover" />}
+      {imageUrl && <Image fill src={imageUrl} alt="." className="object-cover opacity-85" />}
       <CardBody className="p-2">{children}</CardBody>
     </Card>
   )

@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import { links } from '@/lib/nav-path-list'
 import { AlignJustify, X } from 'lucide-react'
 import { useState } from 'react'
+import { signOut } from 'next-auth/react'
 
 function isActiveRoute(path: string, route: string): boolean {
   if (route === '/dashboard') {
@@ -25,7 +26,7 @@ export default function Sidebar() {
     <div className="relative">
       <div
         className={cn(
-          'absolute top-8 left-5 z-[101]',
+          'absolute top-7 left-5 z-[101]',
           isOpen ? 'hidden' : 'block',
           'md:hidden'
         )}
@@ -58,7 +59,11 @@ export default function Sidebar() {
           <div>
             {links.map((link) => (
               <div className="w-full" key={link.route}>
-                <Link href={link.route}>
+                <Link href={link.route} onClick={() => setTimeout(() => {
+                      setIsOpen(false)
+                    }, 150)
+                  }
+                >
                   <div
                     className={cn(
                       `w-full h-full py-2 px-2 hover:bg-secondary rounded-lg `,
@@ -72,7 +77,11 @@ export default function Sidebar() {
             ))}
           </div>
           <div className="absolute bottom-0 w-full left-0 px-4 mb-4">
-            <Button fullWidth variant="ghost">
+            <Button
+              onPress={() => signOut({ callbackUrl: '/' })}
+              fullWidth
+              variant="ghost"
+            >
               Sign Out
             </Button>
           </div>
