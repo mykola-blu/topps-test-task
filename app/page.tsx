@@ -1,5 +1,6 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/auth";
+import Link from "next/link";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -28,37 +29,37 @@ export default async function Home() {
             <nav className="flex flex-wrap gap-4">
               {isAuthenticated ? (
                 <>
-                  <a 
+                  <Link 
                     href="/dashboard" 
                     className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg transition-colors duration-200"
                     role="button"
                   >
                     Go to Dashboard
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/games" 
                     className="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-lg transition-colors duration-200"
                     role="button"
                   >
                     Browse Games
-                  </a>
+                  </Link>
                 </>
               ) : (
                 <>
-                  <a 
+                  <Link 
                     href="/auth" 
                     className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg transition-colors duration-200"
                     role="button"
                   >
                     Sign In
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/games" 
                     className="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-lg transition-colors duration-200"
                     role="button"
                   >
                     Browse Games
-                  </a>
+                  </Link>
                 </>
               )}
             </nav>
