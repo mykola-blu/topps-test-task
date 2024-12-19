@@ -11,11 +11,11 @@ export default async function Games() {
     })
   ).json()
   return (
-    <section className="w-full h-full p-6 flex flex-col">
-      <h1 className="text-2xl font-bold mb-5 text-center md:text-left">
+    <section className="w-full h-full py-6 flex flex-col">
+      <h1 className="text-2xl font-bold ml-6 text-center md:text-left">
         {GAMES_TITLE}
       </h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto flex-1">
+      <div className="p-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto flex-1">
         {data.map((game: RawgGame) => (
           <GameCard key={game.id} game={game} />
         ))}

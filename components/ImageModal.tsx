@@ -10,7 +10,7 @@ export default function ImageModal({ image, alt }: { image: string; alt: string 
   return (
     <>
       <div onClick={onOpen} className="flex justify-start items-center">
-        <ImageUpscale className="hover:scale-110" />
+        <ImageUpscale className="hover:scale-110 cursor-pointer" />
       </div>
       <Modal
         closeButton={<X size={50} />}

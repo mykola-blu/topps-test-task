@@ -10,6 +10,12 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (request.nextUrl.pathname.startsWith('/auth')) {
+    if (token) {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+  }
+
   if (request.nextUrl.pathname.startsWith('/api/rawg')) {
     if (!token) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

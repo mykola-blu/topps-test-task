@@ -23,4 +23,11 @@ declare module 'rawg' {
     games_count: number
     image: string
   }
+
+  export interface RawgGameDetails extends RawgGame {
+    description: string
+    creators_count: number
+    website: string
+    playtime: number
+  }
 }
