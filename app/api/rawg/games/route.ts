@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server'
 export const revalidate = HALF_HOUR
 
 export async function GET() {
-  const response = await fetch(RAWG_GAMES_ENDPOINT)
+  const response = await fetch(`${RAWG_GAMES_ENDPOINT}&page_size=32`)
   const data = await response.json()
   const normalizedData = normalizeRawgData(data, RAWG_GAME_REQUIRED_FIELDS) as RawgGame[]
   return NextResponse.json(normalizedData.sort((a, b) => b.rating - a.rating))
