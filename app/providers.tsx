@@ -2,6 +2,7 @@
 
 import {useRouter} from "next/navigation";
 import {NextUIProvider} from "@nextui-org/react";
+import {SessionProvider} from "next-auth/react";
 
 declare module "@react-types/shared" {
   interface RouterConfig {
@@ -12,5 +13,9 @@ declare module "@react-types/shared" {
 export function Providers({children}: {children: React.ReactNode}) {
   const router = useRouter();
 
-  return <NextUIProvider navigate={router.push}>{children}</NextUIProvider>;
+  return (
+    <SessionProvider>
+      <NextUIProvider navigate={router.push}>{children}</NextUIProvider>
+    </SessionProvider>
+  );
 }

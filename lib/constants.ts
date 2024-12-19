@@ -6,8 +6,16 @@ export const RAWG_STORES_ENDPOINT = `${RAWG_API_ENDPOINT}stores${RAWG_API_KEY_WI
 export const RAWG_CREATORS_ENDPOINT = `${RAWG_API_ENDPOINT}creators${RAWG_API_KEY_WITH_ANCHORE}`
 
 // RAWG API required fields
-export const RAWG_GAME_REQUIRED_FIELDS = ['released', 'background_image', 'rating']
-export const RAWG_STORE_REQUIRED_FIELDS = ['domain', 'games_count', 'image_background']
+export const RAWG_GAME_REQUIRED_FIELDS = [
+  'released',
+  'background_image',
+  'rating',
+]
+export const RAWG_STORE_REQUIRED_FIELDS = [
+  'domain',
+  'games_count',
+  'image_background',
+]
 export const RAWG_CREATOR_REQUIRED_FIELDS = ['games_count', 'image']
 
 // Time intervals for data revalidation
@@ -27,3 +35,4 @@ export const SIGN_IN_BACK_TO_MAIN_PAGE = 'Back to the main page'
 export const STORES_TITLE = 'Stores'
 export const GAMES_TITLE = 'Games'
 export const RATING_TITLE = 'Rating'
+export const BUY_DIAMONDS = 'Buy More Diamonds'
