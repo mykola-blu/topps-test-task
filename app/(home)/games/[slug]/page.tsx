@@ -7,9 +7,9 @@ import { HALF_HOUR } from '@/lib/constants'
 export default async function GamePage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
+  const slug = (await params).slug
   const headers = await getHeadersForApiCall()
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/game?slug=${slug}`,

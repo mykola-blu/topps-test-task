@@ -1,7 +1,6 @@
-import { FIFTEEN_MINUTES } from '@/lib/constants'
 import Sidebar from '@/components/Sidebar'
 
-export const revalidate = FIFTEEN_MINUTES
+export const revalidate = 900
 
 export default function HomeLayout({
   children,

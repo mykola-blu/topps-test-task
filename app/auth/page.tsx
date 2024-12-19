@@ -1,9 +1,9 @@
 import { getProviders } from 'next-auth/react'
 import ProviderButton from './_components/ProviderButton'
-import { ONE_HOUR, SIGN_IN_BACK_TO_MAIN_PAGE, SIGN_IN_SUBTITLE, SIGN_IN_TITLE } from '@/lib/constants'
+import { SIGN_IN_BACK_TO_MAIN_PAGE, SIGN_IN_SUBTITLE, SIGN_IN_TITLE } from '@/lib/constants'
 import Link from 'next/link'
 
-export const revalidate = ONE_HOUR
+export const revalidate = 3600
 
 export default async function Auth() {
   const providers = await getProviders()

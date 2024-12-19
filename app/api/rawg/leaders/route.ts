@@ -1,4 +1,4 @@
-import { RAWG_CREATOR_REQUIRED_FIELDS, RAWG_CREATORS_ENDPOINT } from '@/lib/constants'
+import { FIFTEEN_MINUTES, RAWG_CREATOR_REQUIRED_FIELDS, RAWG_CREATORS_ENDPOINT } from '@/lib/constants'
 import { handleApiError } from '@/lib/utils/handle-api-error'
 import { normalizeRawgData } from '@/lib/utils/rawg-data-normalizer'
 import { RawgCreator } from 'rawg'
