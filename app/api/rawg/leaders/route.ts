@@ -1,15 +1,16 @@
-import { FIFTEEN_MINUTES, RAWG_CREATOR_REQUIRED_FIELDS, RAWG_CREATORS_ENDPOINT } from '@/lib/constants'
+import { RAWG_CREATOR_REQUIRED_FIELDS, RAWG_CREATORS_ENDPOINT } from '@/lib/constants'
 import { handleApiError } from '@/lib/utils/handle-api-error'
 import { normalizeRawgData } from '@/lib/utils/rawg-data-normalizer'
-import { NextResponse } from 'next/server'
 import { RawgCreator } from 'rawg'
 
-// Imagine that a leaderboard is more dynamic and needs to be updated more frequently
-export const revalidate = FIFTEEN_MINUTES
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export async function GET() {
   try {
-    const response = await fetch(`${RAWG_CREATORS_ENDPOINT}&page_size=20`)
+    const response = await fetch(`${RAWG_CREATORS_ENDPOINT}&page_size=20`, {
+      cache: 'no-store'
+    })
     
     if (!response.ok) {
       throw new Error(`RAWG API responded with status: ${response.status}`)
@@ -17,7 +18,13 @@ export async function GET() {
 
     const data = await response.json()
     const normalizedData = normalizeRawgData(data, RAWG_CREATOR_REQUIRED_FIELDS) as RawgCreator[]
-    return NextResponse.json(normalizedData.sort((a, b) => b.games_count - a.games_count))
+    
+    return new Response(JSON.stringify(normalizedData.sort((a, b) => b.games_count - a.games_count)), {
+      headers: {
+        'Cache-Control': `public, s-maxage=${FIFTEEN_MINUTES}`,
+        'Content-Type': 'application/json',
+      },
+    })
   } catch (error) {
     return handleApiError(error)
   }

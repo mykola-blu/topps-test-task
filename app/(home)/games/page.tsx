@@ -1,15 +1,15 @@
-import { GAMES_TITLE } from '@/lib/constants'
+import { GAMES_TITLE, HALF_HOUR } from '@/lib/constants'
 import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
 import { RawgGame } from 'rawg'
 import GameCard from './_components/GameCard'
 
 export default async function Games() {
   const headers = await getHeadersForApiCall()
-  const data = await (
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/games`, {
-      headers,
-    })
-  ).json()
+  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/games`, {
+    headers,
+    next: { revalidate: HALF_HOUR }
+  }).then(res => res.json())
+
   return (
     <section className="w-full h-full py-6 flex flex-col">
       <h1 className="text-2xl font-bold ml-6 text-center md:text-left">

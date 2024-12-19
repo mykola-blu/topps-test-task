@@ -4,9 +4,7 @@ import {
   RAWG_API_KEY_WITH_ANCHORE,
 } from '@/lib/constants'
 import { handleApiError } from '@/lib/utils/handle-api-error'
-import { NextRequest, NextResponse } from 'next/server'
-
-export const revalidate = HALF_HOUR
+import { NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,11 +12,15 @@ export async function GET(request: NextRequest) {
     const slug = searchParams.get('slug')
 
     if (!slug) {
-      return NextResponse.json({ error: 'Slug parameter is required' }, { status: 400 })
+      return new Response(JSON.stringify({ error: 'Slug parameter is required' }), { 
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      })
     }
 
     const response = await fetch(
-      `${RAWG_API_ENDPOINT}games/${slug}${RAWG_API_KEY_WITH_ANCHORE}`
+      `${RAWG_API_ENDPOINT}games/${slug}${RAWG_API_KEY_WITH_ANCHORE}`,
+      { cache: 'no-store' }
     )
 
     if (!response.ok) {
@@ -26,7 +28,12 @@ export async function GET(request: NextRequest) {
     }
 
     const data = await response.json()
-    return NextResponse.json(data)
+    return new Response(JSON.stringify(data), {
+      headers: {
+        'Cache-Control': `public, s-maxage=${HALF_HOUR}`,
+        'Content-Type': 'application/json',
+      },
+    })
   } catch (error) {
     return handleApiError(error)
   }

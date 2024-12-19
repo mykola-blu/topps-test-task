@@ -2,6 +2,7 @@ import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
 import createDOMPurify from 'isomorphic-dompurify'
 import { SquareArrowOutUpRight } from 'lucide-react'
 import Link from 'next/link'
+import { HALF_HOUR } from '@/lib/constants'
 
 export default async function GamePage({
   params,
@@ -10,14 +11,13 @@ export default async function GamePage({
 }) {
   const { slug } = await params
   const headers = await getHeadersForApiCall()
-  const data = await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/game?slug=${slug}`,
-      {
-        headers,
-      }
-    )
-  ).json()
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/game?slug=${slug}`,
+    {
+      headers,
+      next: { revalidate: HALF_HOUR }
+    }
+  ).then(res => res.json())
   const { name, background_image, rating, released, description, website, playtime } =
     data
   const sanitizedDescription = createDOMPurify.sanitize(description)

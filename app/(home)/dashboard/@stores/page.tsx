@@ -1,15 +1,17 @@
-import { STORES_DASHBOARD_TITLE } from '@/lib/constants'
+import { HALF_HOUR, STORES_DASHBOARD_TITLE } from '@/lib/constants'
 import { getHeadersForApiCall } from '@/lib/utils/get-headers-for-api-call'
-import { RawgStore } from 'rawg'  
+import { RawgStore } from 'rawg'
 import StoreSlot from './_components/StoreSlot'
 
 export default async function Stores() {
   const headers = await getHeadersForApiCall()
-  const data = await (
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/stores`, {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/rawg/stores`,
+    {
       headers,
-    })
-  ).json()
+      next: { revalidate: HALF_HOUR },
+    }
+  ).then((res) => res.json())
 
   return (
     <div className="py-2 px-4 overflow-y-auto h-full">
