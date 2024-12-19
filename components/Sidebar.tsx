@@ -53,13 +53,18 @@ export default function Sidebar() {
         <div className="w-full h-full px-3 relative">
           <div className="mb-12">
             <figure className="w-[80px] pt-4">
-              <Image src={Logo} alt="Topps" />
+              <Link href="/">
+                <Image src={Logo} alt="Topps" />
+              </Link>
             </figure>
           </div>
           <div>
             {links.map((link) => (
               <div className="w-full" key={link.route}>
-                <Link href={link.route} onClick={() => setTimeout(() => {
+                <Link
+                  href={link.route}
+                  onClick={() =>
+                    setTimeout(() => {
                       setIsOpen(false)
                     }, 150)
                   }
