@@ -26,7 +26,7 @@ export default function Sidebar() {
     <div className="relative">
       <div
         className={cn(
-          'absolute top-7 left-5 z-[101]',
+          'fixed top-7 left-5 z-[101]',
           isOpen ? 'hidden' : 'block',
           'md:hidden'
         )}
@@ -35,7 +35,7 @@ export default function Sidebar() {
       </div>
       <div
         className={cn(
-          'absolute top-8 left-[80vw] z-[101]',
+          'fixed top-8 left-[80vw] z-[101]',
           isOpen ? 'block' : 'hidden',
           'md:hidden'
         )}
@@ -44,7 +44,7 @@ export default function Sidebar() {
       </div>
       <aside
         className={cn(
-          'absolute md:static w-[90vw] md:w-[20vw] h-full border-r border-default-100 bg-background z-[100]',
+          'fixed md:static w-[90vw] md:w-[20vw] h-screen border-r border-default-100 bg-background z-[100]',
           isOpen ? 'block' : 'hidden',
           'md:block',
           'transition-all duration-500 ease-in-out'
